@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    .linesWrapper {
+      position: absolute;
+      opacity: 0;
+    }
+    .linesWrapper-active {
+      opacity: 1;
+    }
+    .linesWrapper__info {
+      padding: 6px;
+      position: relative;
+      transition: background .1s;
+      background: #FFF;
+      border-radius: 6px;
+      z-index: 6;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    }
+    .linesWrapper__text {
+      font-size: 12px;
+    }
+    .linesWrapper__value {
+      font-size: 20px;
+      font-weight: 700;
+    }
+    .linesWrapper__date {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+    .linesWrapper__valueWrapper {
+      display: inline-block;
+      margin-right: 6px;
+    }
+    .linesWrapper__line {
+      margin-left: 7px;
+      width: 1px;
+      height: 415px;
+      position: absolute;
+      top: 0;
+      z-index: 5;
+      background: #EAEAEA;
+    }
+    .linesWrapper__dot {
+      width: 10px;
+      height: 10px;
+      position: absolute;
+      z-index: 6;
+      transition: background .1s;
+      border: 2px solid;
+      border-radius: 50%;
+    }
+
+    .dates__element {
+      transition: left 0.1s;
+    }
+
+    .checkbox__wrapper {
+      padding: 8px;
+      margin: 8px;
+      border-radius: 10px;
+      display: inline-block;
+      border: 1px solid #EAEAEA;
+    }
+    .checkbox__wrapper input[type="checkbox"]+label {
+      cursor: pointer;
+      position: relative;
+      margin-left: 22px;
+      display: inline-block;
+      padding-left: 10px;
+    }
+
+    .checkbox__wrapper input[type="checkbox"] {
+      position: absolute;
+      left: -9999px;
+    }
+
+    /* the checkbox
+    -----------------------------------------------*/
+    .checkbox__wrapper input[type="checkbox"]+label::after {
+      content: '';
+      border: 2px solid rgba(0, 0, 0, .5);
+      border-radius: 50%;
+      background-color: white;
+      position: absolute;
+      top: 50%;
+      right: 10px;
+      transform: translate(-20px, -50%);
+      box-sizing: border-box;
+      width: 20px;
+      height: 20px;
+      transition: background-color 1s;
+      background-position: -2px -1px;
+    }
+
+    /* the checkbox -- checked
+    -----------------------------------------------*/
+    .checkbox__wrapper input[type="checkbox"]:checked+label::after {
+      border: 2px solid rgba(23, 149, 136, 1);
+      background-color: rgba(23, 149, 136, .7);
+    }
+
+    /* the checkbox -- disabled
+    -----------------------------------------------*/
+    .checkbox__wrapper input[type="checkbox"]:disabled+label::after {
+      border: 2px solid rgba(0, 0, 0, .1);
+      background-color: rgba(0, 0, 0, .05);
+      background-image: none;
+    }
+
+
+    .checkbox__wrapper input[type="checkbox"]:focus+label::before {
+      animation: ripple 1s ease-out;
+    }
+
+    @keyframes ripple {
+      0% {
+        transform: scale(0, 0);
+        opacity: 1;
+      }
+      20% {
+        transform: scale(25, 25);
+        opacity: 1;
+      }
+      100% {
+        opacity: 0;
+        transform: scale(40, 40);
+      }
+    }
+
+    body {
+      transition: opacity .1s;
+    }
+
+
+  </style>
+</head>
+<body>
+  <div class="chart0"></div>
+  <div class="chart1"></div>
+  <div class="chart2"></div>
+  <div class="chart3"></div>
+  <div class="chart4"></div>
+  <script src="./main.js"></script>
+</body>
+</html>
